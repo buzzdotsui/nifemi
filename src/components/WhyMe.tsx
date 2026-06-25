@@ -1,28 +1,29 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TiltCard from './common/TiltCard';
+import { Zap, Target, ShieldCheck, Radio } from 'lucide-react';
 
 const whys = [
   {
-    icon: '⚡',
+    Icon: Zap,
     title: 'Fast Turnaround',
     desc: 'I respect your time. Tasks are delivered on schedule — no excuses, just results.',
     num: '01',
   },
   {
-    icon: '🎯',
+    Icon: Target,
     title: 'Goal-Oriented',
     desc: 'Every action I take is tied to your business goals — growth, efficiency, and success.',
     num: '02',
   },
   {
-    icon: '🔒',
+    Icon: ShieldCheck,
     title: 'Fully Confidential',
     desc: 'Your business information is handled with the utmost privacy and discretion.',
     num: '03',
   },
   {
-    icon: '📡',
+    Icon: Radio,
     title: 'Always Reachable',
     desc: 'Clear, prompt communication across time zones. You will always know what is happening.',
     num: '04',
@@ -75,7 +76,9 @@ export default function WhyMe() {
               <TiltCard style={{ height: '100%' }}>
                 <div className="why-card">
                   <span className="why-number">{w.num}</span>
-                  <div className="why-icon-wrap">{w.icon}</div>
+                  <div className="why-icon-wrap">
+                    <w.Icon size={28} strokeWidth={1.5} color="var(--gold)" />
+                  </div>
                   <h3 className="why-card-title">{w.title}</h3>
                   <p className="why-card-desc">{w.desc}</p>
                 </div>

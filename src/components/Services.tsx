@@ -1,12 +1,21 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import TiltCard from './common/TiltCard';
+import {
+  Headset,
+  Share2,
+  PenLine,
+  BarChart3,
+  Sparkles,
+  FolderKanban,
+} from 'lucide-react';
 
 const services = [
   {
-    icon: '🤖',
+    Icon: Headset,
     title: 'Virtual Assistant',
     desc: 'Comprehensive administrative support to keep your business running smoothly.',
+    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=600&q=80',
     items: [
       'Email & calendar management',
       'Data entry & research',
@@ -16,9 +25,10 @@ const services = [
     ],
   },
   {
-    icon: '📱',
+    Icon: Share2,
     title: 'Social Media Management',
     desc: 'End-to-end management of your social media presence to grow your brand.',
+    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&q=80',
     items: [
       'Content creation & scheduling',
       'Community engagement',
@@ -28,9 +38,10 @@ const services = [
     ],
   },
   {
-    icon: '✍️',
+    Icon: PenLine,
     title: 'Content Strategy',
     desc: 'Crafting a content roadmap that resonates with your audience and drives results.',
+    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80',
     items: [
       'Content calendar planning',
       'Brand voice development',
@@ -40,9 +51,10 @@ const services = [
     ],
   },
   {
-    icon: '📊',
+    Icon: BarChart3,
     title: 'Analytics & Reporting',
     desc: 'Data-driven insights that help you understand performance and make smart decisions.',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
     items: [
       'Weekly performance reports',
       'Competitor analysis',
@@ -52,9 +64,10 @@ const services = [
     ],
   },
   {
-    icon: '🎯',
+    Icon: Sparkles,
     title: 'Brand Building',
     desc: 'Establishing and strengthening your brand identity across all digital touchpoints.',
+    image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80',
     items: [
       'Brand consistency audit',
       'Profile optimisation',
@@ -64,9 +77,10 @@ const services = [
     ],
   },
   {
-    icon: '⚡',
+    Icon: FolderKanban,
     title: 'Project Coordination',
     desc: 'Keeping your projects on track with clear timelines, tasks, and communication.',
+    image: 'https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=600&q=80',
     items: [
       'Task management & tracking',
       'Team coordination',
@@ -126,14 +140,29 @@ export default function Services() {
             >
               <TiltCard style={{ height: '100%' }}>
                 <div className="service-card">
-                  <div className="service-icon">{service.icon}</div>
-                  <h3 className="service-title">{service.title}</h3>
-                  <p className="service-desc">{service.desc}</p>
-                  <ul className="service-list">
-                    {service.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
+                  {/* Background image & gradient overlay */}
+                  <div className="service-card-bg">
+                    <img
+                      src={service.image}
+                      alt=""
+                      loading="lazy"
+                    />
+                    <div className="service-card-overlay" />
+                  </div>
+                  
+                  {/* Text content z-index wrapper */}
+                  <div className="service-card-content">
+                    <div className="service-icon">
+                      <service.Icon size={26} strokeWidth={1.5} color="var(--gold)" />
+                    </div>
+                    <h3 className="service-title">{service.title}</h3>
+                    <p className="service-desc">{service.desc}</p>
+                    <ul className="service-list">
+                      {service.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </TiltCard>
             </motion.div>

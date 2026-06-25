@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Magnetic from './common/Magnetic';
+import { Mail, Phone, Globe, Linkedin, Twitter, Instagram, MessageCircle } from 'lucide-react';
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -47,16 +48,18 @@ export default function Contact() {
 
             <div className="contact-details">
               {[
-                { icon: '📧', label: 'Email', value: 'akarakirinifemi@gmail.com', href: 'mailto:akarakirinifemi@gmail.com' },
-                { icon: '📱', label: 'Phone / WhatsApp', value: '08166340477', href: 'tel:+2348166340477' },
-                { icon: '🌍', label: 'Location', value: 'Nigeria — Available Remotely Worldwide', href: undefined },
+                { Icon: Mail, label: 'Email', value: 'akarakirinifemi@gmail.com', href: 'mailto:akarakirinifemi@gmail.com' },
+                { Icon: Phone, label: 'Phone / WhatsApp', value: '08166340477', href: 'tel:+2348166340477' },
+                { Icon: Globe, label: 'Location', value: 'Nigeria — Available Remotely Worldwide', href: undefined },
               ].map((item) => (
                 <motion.div
                   key={item.label}
                   className="contact-detail-item"
                   whileHover={{ x: 5 }}
                 >
-                  <div className="contact-detail-icon">{item.icon}</div>
+                  <div className="contact-detail-icon">
+                    <item.Icon size={20} strokeWidth={1.5} color="var(--gold)" />
+                  </div>
                   <div className="contact-detail-text">
                     <span className="contact-detail-label">{item.label}</span>
                     {item.href ? (
@@ -77,12 +80,11 @@ export default function Contact() {
                 Find Me On
               </p>
               <div className="contact-social">
-                {/* Wrap each social button in Magnetic */}
                 {[
-                  { label: 'LinkedIn', icon: 'in', href: 'https://linkedin.com' },
-                  { label: 'Twitter', icon: '𝕏', href: 'https://twitter.com' },
-                  { label: 'Instagram', icon: '◈', href: 'https://instagram.com' },
-                  { label: 'WhatsApp', icon: '✆', href: 'https://wa.me/2348166340477' },
+                  { label: 'LinkedIn', Icon: Linkedin, href: 'https://linkedin.com' },
+                  { label: 'Twitter', Icon: Twitter, href: 'https://twitter.com' },
+                  { label: 'Instagram', Icon: Instagram, href: 'https://instagram.com' },
+                  { label: 'WhatsApp', Icon: MessageCircle, href: 'https://wa.me/2348166340477' },
                 ].map((s) => (
                   <Magnetic key={s.label}>
                     <motion.a
@@ -94,7 +96,7 @@ export default function Contact() {
                       whileHover={{ scale: 1.1, y: -3 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      {s.icon}
+                      <s.Icon size={18} strokeWidth={1.5} />
                     </motion.a>
                   </Magnetic>
                 ))}
