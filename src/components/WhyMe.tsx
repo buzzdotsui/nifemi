@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import TiltCard from './common/TiltCard';
 
 const whys = [
   {
@@ -66,16 +67,19 @@ export default function WhyMe() {
           {whys.map((w, i) => (
             <motion.div
               key={w.title}
-              className="why-card"
               initial={{ opacity: 0, y: 60 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 + 0.3 }}
-              whileHover={{ scale: 1.03 }}
+              style={{ height: '100%' }}
             >
-              <span className="why-number">{w.num}</span>
-              <div className="why-icon-wrap">{w.icon}</div>
-              <h3 className="why-card-title">{w.title}</h3>
-              <p className="why-card-desc">{w.desc}</p>
+              <TiltCard style={{ height: '100%' }}>
+                <div className="why-card">
+                  <span className="why-number">{w.num}</span>
+                  <div className="why-icon-wrap">{w.icon}</div>
+                  <h3 className="why-card-title">{w.title}</h3>
+                  <p className="why-card-desc">{w.desc}</p>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

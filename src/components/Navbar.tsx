@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Magnetic from './common/Magnetic';
 
 const navItems = ['Home', 'About', 'Services', 'Skills', 'Contact'];
 
@@ -49,17 +50,19 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <motion.button
-          className="nav-cta"
-          onClick={() => scrollTo('Contact')}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.7, duration: 0.4 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          Hire Me
-        </motion.button>
+        <Magnetic>
+          <motion.button
+            className="nav-cta"
+            onClick={() => scrollTo('Contact')}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.4 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Hire Me
+          </motion.button>
+        </Magnetic>
 
         <button
           className="nav-hamburger"

@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import TiltCard from './common/TiltCard';
+import Magnetic from './common/Magnetic';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 50 },
@@ -25,87 +27,89 @@ export default function About() {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.9, ease: [0.4, 0, 0.2, 1] }}
           >
-            <div className="about-image-frame">
-              {/* Tilted decorative border */}
-              <div className="about-image-bg" />
+            <TiltCard>
+              <div className="about-image-frame">
+                {/* Tilted decorative border */}
+                <div className="about-image-bg" />
 
-              {/* Second glow border */}
-              <motion.div
-                style={{
-                  position: 'absolute',
-                  inset: -8,
-                  borderRadius: 'var(--radius-lg)',
-                  border: '1px solid rgba(201,168,76,0.12)',
-                  transform: 'rotate(-2deg)',
-                  pointerEvents: 'none',
-                }}
-                animate={{ opacity: [0.5, 1, 0.5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-              />
-
-              <div className="about-image-inner" style={{ position: 'relative', overflow: 'hidden' }}>
-                {/* Real photo */}
-                <img
-                  src="/nifemi.jpg"
-                  alt="Akarakiri Nifemi — Virtual Assistant & Social Media Manager"
-                  className="about-avatar"
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center top',
-                    filter: 'grayscale(30%) contrast(1.08) brightness(0.92) sepia(12%)',
-                  }}
-                />
-
-                {/* Gold duotone overlay */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(180deg, rgba(201,168,76,0.04) 0%, rgba(0,0,0,0.35) 100%)',
-                    mixBlendMode: 'multiply',
-                    pointerEvents: 'none',
-                  }}
-                />
-
-                {/* Bottom vignette for text-readability */}
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: '40%',
-                    background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)',
-                    pointerEvents: 'none',
-                  }}
-                />
-
-                {/* Pulsing border ring inside image */}
+                {/* Second glow border */}
                 <motion.div
                   style={{
                     position: 'absolute',
-                    inset: 6,
-                    borderRadius: 'calc(var(--radius-md) - 4px)',
-                    border: '1px solid rgba(201,168,76,0.3)',
+                    inset: -8,
+                    borderRadius: 'var(--radius-lg)',
+                    border: '1px solid rgba(201,168,76,0.12)',
+                    transform: 'rotate(-2deg)',
                     pointerEvents: 'none',
                   }}
-                  animate={{ opacity: [0.3, 0.8, 0.3] }}
-                  transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                  animate={{ opacity: [0.5, 1, 0.5] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                 />
-              </div>
 
-              <motion.div
-                className="about-badge-floating"
-                initial={{ opacity: 0, scale: 0.7 }}
-                animate={inView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 }}
-              >
-                <span className="num">2+</span>
-                Years Experience
-              </motion.div>
-            </div>
+                <div className="about-image-inner" style={{ position: 'relative', overflow: 'hidden' }}>
+                  {/* Real photo */}
+                  <img
+                    src="/nifemi.jpg"
+                    alt="Akarakiri Nifemi — Virtual Assistant & Social Media Manager"
+                    className="about-avatar"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center top',
+                      filter: 'grayscale(30%) contrast(1.08) brightness(0.92) sepia(12%)',
+                    }}
+                  />
+
+                  {/* Gold duotone overlay */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(180deg, rgba(201,168,76,0.04) 0%, rgba(0,0,0,0.35) 100%)',
+                      mixBlendMode: 'multiply',
+                      pointerEvents: 'none',
+                    }}
+                  />
+
+                  {/* Bottom vignette for text-readability */}
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      height: '40%',
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%)',
+                      pointerEvents: 'none',
+                    }}
+                  />
+
+                  {/* Pulsing border ring inside image */}
+                  <motion.div
+                    style={{
+                      position: 'absolute',
+                      inset: 6,
+                      borderRadius: 'calc(var(--radius-md) - 4px)',
+                      border: '1px solid rgba(201,168,76,0.3)',
+                      pointerEvents: 'none',
+                    }}
+                    animate={{ opacity: [0.3, 0.8, 0.3] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+                  />
+                </div>
+
+                <motion.div
+                  className="about-badge-floating"
+                  initial={{ opacity: 0, scale: 0.7 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  <span className="num">2+</span>
+                  Years Experience
+                </motion.div>
+              </div>
+            </TiltCard>
           </motion.div>
 
           {/* Content */}
@@ -181,15 +185,17 @@ export default function About() {
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
             >
-              <motion.a
-                href="mailto:akarakirinifemi@gmail.com"
-                className="btn-primary"
-                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                📧 Get in Touch
-              </motion.a>
+              <Magnetic>
+                <motion.a
+                  href="mailto:akarakirinifemi@gmail.com"
+                  className="btn-primary"
+                  style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  📧 Get in Touch
+                </motion.a>
+              </Magnetic>
             </motion.div>
           </div>
         </div>

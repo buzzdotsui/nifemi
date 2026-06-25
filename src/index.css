@@ -1210,3 +1210,57 @@ section {
     text-align: center;
   }
 }
+
+/* ========================
+   3D TILT & PARALLAX GLOW EFFECT
+========================= */
+.tilt-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Disable conflicting translation on service-card inside a tilt-card */
+.tilt-card .service-card {
+  height: 100%;
+  transform: none !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tilt-card:hover .service-card {
+  background: var(--card-hover) !important;
+  border-color: var(--border-glow) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px var(--gold-glow) !important;
+}
+
+.tilt-card .why-card {
+  height: 100%;
+  transform: none !important;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+}
+
+.tilt-card:hover .why-card {
+  background: var(--card-hover) !important;
+  border-color: var(--border) !important;
+}
+
+/* 3D Parallax layered depth for the Profile Frame */
+.about-image-frame {
+  transform-style: preserve-3d;
+}
+
+.about-image-bg {
+  transform: translateZ(-20px) rotate(3deg);
+}
+
+.about-image-inner {
+  transform: translateZ(15px);
+  transform-style: preserve-3d;
+}
+
+.about-badge-floating {
+  transform: translateZ(35px);
+}
+

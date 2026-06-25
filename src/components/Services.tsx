@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import TiltCard from './common/TiltCard';
 
 const services = [
   {
@@ -114,24 +115,27 @@ export default function Services() {
           {services.map((service, i) => (
             <motion.div
               key={service.title}
-              className="service-card"
-              initial={{ opacity: 0, y: 50, scale: 0.95 }}
-              animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              initial={{ opacity: 0, y: 50 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{
                 duration: 0.6,
                 delay: 0.1 * i + 0.3,
                 ease: [0.4, 0, 0.2, 1],
               }}
-              whileHover={{ y: -8 }}
+              style={{ height: '100%' }}
             >
-              <div className="service-icon">{service.icon}</div>
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-desc">{service.desc}</p>
-              <ul className="service-list">
-                {service.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+              <TiltCard style={{ height: '100%' }}>
+                <div className="service-card">
+                  <div className="service-icon">{service.icon}</div>
+                  <h3 className="service-title">{service.title}</h3>
+                  <p className="service-desc">{service.desc}</p>
+                  <ul className="service-list">
+                    {service.items.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Magnetic from './common/Magnetic';
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -76,24 +77,26 @@ export default function Contact() {
                 Find Me On
               </p>
               <div className="contact-social">
+                {/* Wrap each social button in Magnetic */}
                 {[
                   { label: 'LinkedIn', icon: 'in', href: 'https://linkedin.com' },
                   { label: 'Twitter', icon: '𝕏', href: 'https://twitter.com' },
                   { label: 'Instagram', icon: '◈', href: 'https://instagram.com' },
                   { label: 'WhatsApp', icon: '✆', href: 'https://wa.me/2348166340477' },
                 ].map((s) => (
-                  <motion.a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-btn"
-                    title={s.label}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {s.icon}
-                  </motion.a>
+                  <Magnetic key={s.label}>
+                    <motion.a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="social-btn"
+                      title={s.label}
+                      whileHover={{ scale: 1.1, y: -3 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {s.icon}
+                    </motion.a>
+                  </Magnetic>
                 ))}
               </div>
             </div>
@@ -172,15 +175,17 @@ export default function Contact() {
               </motion.div>
             )}
 
-            <motion.button
-              id="contact-submit"
-              type="submit"
-              className="form-submit"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Send Message ✦
-            </motion.button>
+            <Magnetic>
+              <motion.button
+                id="contact-submit"
+                type="submit"
+                className="form-submit"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Send Message ✦
+              </motion.button>
+            </Magnetic>
 
             <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', marginTop: '-0.5rem' }}>
               I typically respond within 24 hours. WhatsApp me for urgent requests!

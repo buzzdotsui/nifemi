@@ -1,5 +1,33 @@
 import { motion } from 'framer-motion';
 import ParticleCanvas from './ParticleCanvas';
+import Magnetic from './common/Magnetic';
+
+const titleVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.04,
+      delayChildren: 0.35,
+    },
+  },
+};
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 55 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring' as const,
+      damping: 14,
+      stiffness: 120,
+    },
+  },
+};
+
+const word1 = 'Akarakiri'.split('');
+const word2 = 'Nifemi'.split('');
 
 // Animated typewriter for roles
 import { useEffect, useState } from 'react';
@@ -87,14 +115,32 @@ export default function Hero() {
         {/* Name */}
         <motion.h1
           className="hero-name"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.4, 0, 0.2, 1] }}
+          variants={titleVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <span className="hero-title-line" style={{ color: 'var(--text-primary)' }}>
-            Akarakiri
+          <span className="hero-title-line" style={{ color: 'var(--text-primary)', display: 'block', overflow: 'hidden' }}>
+            {word1.map((char, idx) => (
+              <motion.span
+                key={`w1-${idx}`}
+                variants={letterVariants}
+                style={{ display: 'inline-block', whiteSpace: 'pre' }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </span>
-          <span className="hero-title-line gradient-text">Nifemi</span>
+          <span className="hero-title-line gradient-text" style={{ display: 'block', overflow: 'hidden' }}>
+            {word2.map((char, idx) => (
+              <motion.span
+                key={`w2-${idx}`}
+                variants={letterVariants}
+                style={{ display: 'inline-block', whiteSpace: 'pre' }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </span>
         </motion.h1>
 
         {/* Dynamic role */}
@@ -118,24 +164,28 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.9 }}
         >
-          <motion.button
-            className="btn-primary"
-            id="hero-hire-btn"
-            onClick={() => scrollTo('contact')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Hire Me ✦
-          </motion.button>
-          <motion.button
-            className="btn-secondary"
-            id="hero-services-btn"
-            onClick={() => scrollTo('services')}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View Services
-          </motion.button>
+          <Magnetic>
+            <motion.button
+              className="btn-primary"
+              id="hero-hire-btn"
+              onClick={() => scrollTo('contact')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Hire Me ✦
+            </motion.button>
+          </Magnetic>
+          <Magnetic>
+            <motion.button
+              className="btn-secondary"
+              id="hero-services-btn"
+              onClick={() => scrollTo('services')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              View Services
+            </motion.button>
+          </Magnetic>
         </motion.div>
 
         {/* Stats */}
