@@ -1,73 +1,96 @@
-# React + TypeScript + Vite
+# Akarakiri Nifemi — Professional Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, state-of-the-art interactive digital portfolio for **Akarakiri Nifemi**, showcasing professional Virtual Assistant & Social Media Management services.
 
-Currently, two official plugins are available:
+Built using React, TypeScript, Vite, and Framer Motion, the site is designed to engage clients with smooth 3D physics, glassmorphic styling, and ultra-fluid animations, while maintaining 100% responsiveness on all mobile viewports.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **🌌 3D Volumetric Globe**: Replaced basic flat point particle fields with a mathematically generated 3D volumetric rotating point sphere rendering at 60fps on a HTML5 Canvas.
+- **✨ 3D Parallax Tilt Cards**: Integrated cursor-tracking 3D coordinate rotations ($rotateX$ / $rotateY$) with custom glossy shine reflections and deep layered parallax windowing (profile image frame).
+- **🧲 Elastic Magnetic CTAs**: Created a magnetic attraction interaction that pulls action triggers (navigation items, social links, submit CTA) toward the user's cursor.
+- **📱 Fully Responsive Design**: Tested and styled to look perfect across all screens—from large 4K displays down to compact mobile phones (e.g., iPhone SE) with responsive typographic clamp bounds.
+- **🔒 Mobile Menu Navigation**: Polished mobile navigation bar with smooth spring entrance transitions and automatic viewport scroll-locking when the side tray is open.
+- **⚡ Peak Performance**: Engineered on top of modern bundlers yielding compilation packages of under 380KB total size.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🛠️ Technology Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Framework**: [React 19](https://react.dev) (TypeScript support)
+- **Styling**: [Vanilla CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) (Modular design tokens, CSS variables, typography mappings)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/) (Spring physics, entrance transitions, layout bounds)
+- **Bundler**: [Vite 8](https://vite.dev) (HMR development, optimized builds)
+- **Icons**: [Lucide React](https://lucide.dev) (Vector rendering support)
+- **Fonts**: [Space Grotesk & Inter](https://fonts.google.com) (Premium typography scales)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 📂 Directory Layout
+
+```text
+├── public/                 # Static asset folder
+│   └── nifemi.jpg          # Profile photo
+├── src/
+│   ├── components/         # Page sections
+│   │   ├── common/         # Interactive wrappers
+│   │   │   ├── Magnetic.tsx # Elastic button wrapper
+│   │   │   └── TiltCard.tsx # 3D rotating glare container
+│   │   ├── About.tsx       # Profile description section
+│   │   ├── Contact.tsx     # Message inbox formulation & contact links
+│   │   ├── Footer.tsx      # Copy & social anchors
+│   │   ├── Hero.tsx        # Typewriting role animation & welcome page
+│   │   ├── Navbar.tsx      # Hamburger & sticky scrolling header
+│   │   ├── ParticleCanvas.tsx # Volumetric background rendering
+│   │   ├── Services.tsx    # List of offered remote services
+│   │   └── Skills.tsx      # Skills list & Tools grid
+│   ├── App.css             # Supplementary styling
+│   ├── App.tsx             # Root page layout
+│   ├── index.css           # Global typography & card theme setups
+│   └── main.tsx            # DOM initialization entry
+├── package.json            # Configuration file
+└── tsconfig.json           # Compiler rules
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Getting Started
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Prerequisites
+
+Ensure you have [Node.js](https://nodejs.org) (v18 or higher) installed.
+
+### Setup and Running
+
+1. Clone or navigate to the directory:
+   ```bash
+   cd "Nifemi Porfolio"
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+   *Open [http://localhost:5173](http://localhost:5173) in your browser.*
+
+4. Build for production:
+   ```bash
+   npm run build
+   ```
+   *Compiles clean static assets inside the `dist` directory.*
+
+---
+
+## 📬 Contact Info
+
+- **Name**: Akarakiri Nifemi
+- **Email**: [akarakirinifemi@gmail.com](mailto:akarakirinifemi@gmail.com)
+- **Phone / WhatsApp**: [08166340477](tel:+2348166340477)
+- **Services**: Virtual Assistant, Social Media Management, Content Strategy, Brand Building
